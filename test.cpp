@@ -23,7 +23,7 @@ default_random_engine eng;
 
 void testMin(const vector<int>& v)
 {
-	uniform_int_distribution randint(0U, (unsigned)v.size() - 1);
+	uniform_int_distribution<unsigned> randint{ 0U, (unsigned)v.size() - 1 };
 	MinSparseTable<int> minst = createMinSparseTable(v);
 	for (int i = 0; i < N; i++) {
 		int low = randint(eng);
@@ -41,7 +41,7 @@ void testMin(const vector<int>& v)
 }
 void testMax(const vector<int>& v)
 {
-	uniform_int_distribution randint(0U, (unsigned)v.size() - 1);
+	uniform_int_distribution<unsigned> randint(0U, (unsigned)v.size() - 1);
 	MaxSparseTable<int> maxst = createMaxSparseTable(v);
 	for (int i = 0; i < N; i++) {
 		int low = randint(eng);
@@ -59,7 +59,7 @@ void testMax(const vector<int>& v)
 }
 void testSum(const vector<int>& v)
 {
-	uniform_int_distribution randint(0U, (unsigned)v.size() - 1);
+	uniform_int_distribution<unsigned> randint(0U, (unsigned)v.size() - 1);
 	SparseTable<int> st = SparseTable<int>(v, [](const int& a, const int& b) { return a + b; });
 	for (int i = 0; i < 100; i++) {
 		int low = randint(eng);
